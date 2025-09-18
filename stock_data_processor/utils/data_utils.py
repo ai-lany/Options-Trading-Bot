@@ -70,7 +70,7 @@ class StockDataProcessor:
     def find_outliers(self, df: pd.DataFrame, column: str) -> pd.DataFrame:
         """
         Identify outliers as points that are more than three standard deviations from the mean (standard deviation-based method).
-        Reference: https://www.tandfonline.com/doi/full/10.1080/23322039.2022.2066762#abstract
+        Reference: https://www.tandfonline.com/doi/full/10.1080/23322039.2022.2066762
         Args:
             df: Input DataFrame with stock data
             column: Column name to check for outliers
