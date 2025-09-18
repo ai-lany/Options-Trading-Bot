@@ -83,7 +83,8 @@ class StockDataProcessor:
         
         mean = df[column].mean()
         std = df[column].std()
-        threshold = 3 * std
+        epsilon = 1e-8
+        threshold = 3 * max(std, epsilon)
         
         outliers = df[(df[column] < (mean - threshold)) | (df[column] > (mean + threshold))]
         
