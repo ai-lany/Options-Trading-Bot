@@ -19,7 +19,7 @@ from config import (
     VALID_PERIODS, VALID_INTERVALS, STREAMING_UPDATE_INTERVAL,
     PRICE_COLUMNS
 )
-from data_utils import StockDataProcessor
+from utils.data_utils import StockDataProcessor
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
@@ -290,46 +290,8 @@ class StockDataReader:
 
 
 def main():
-    """
-    Demo function showing basic usage of the StockDataReader.
-    """
-    print("=== Stock Data Reader Demo ===")
-    
-    # Initialize reader with default symbols
+    print("Starting Stock Data Reader...")
     reader = StockDataReader()
-    
-    # Fetch historical data for a single symbol
-    print("\n1. Fetching historical data for AAPL...")
-    aapl_data = reader.fetch_historical_data('AAPL', period='5d', interval='1h')
-    print(f"Retrieved {len(aapl_data)} data points")
-    
-    if not aapl_data.empty:
-        # Convert to numpy array
-        numpy_data = reader.data_to_numpy(aapl_data)
-        print(f"Numpy array shape: {numpy_data.shape}")
-        print(f"Columns: {PRICE_COLUMNS}")
-        print(f"Sample data (first 3 rows):\n{numpy_data[:3]}")
-        
-        # Calculate some statistics
-        close_prices = numpy_data[:, 3]  # Close prices (4th column)
-        summary = reader.data_processor.get_data_summary(close_prices)
-        print(f"Close price summary: {summary}")
-    
-    # Get real-time data
-    print("\n2. Getting real-time data for AAPL...")
-    real_time_data = reader.get_real_time_data('AAPL')
-    print(f"Current price: ${real_time_data.get('current_price', 'N/A')}")
-    print(f"Recent data shape: {real_time_data['recent_data'].shape}")
-    
-    # Fetch data for multiple symbols
-    print("\n3. Fetching data for multiple symbols...")
-    multi_data = reader.fetch_multiple_symbols(['AAPL', 'GOOGL', 'MSFT'], period='1d', interval='5m')
-    
-    for symbol, data in multi_data.items():
-        numpy_array = reader.data_to_numpy(data)
-        print(f"{symbol}: {numpy_array.shape} - Latest close: ${numpy_array[-1, 3]:.2f}")
-    
-    print("\nDemo completed!")
 
 
 if __name__ == "__main__":

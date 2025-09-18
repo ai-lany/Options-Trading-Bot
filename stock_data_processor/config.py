@@ -3,7 +3,7 @@ Configuration settings for the stock data reader application.
 """
 
 # Default stock symbols to track
-DEFAULT_SYMBOLS = ['AAPL', 'GOOGL', 'MSFT', 'TSLA', 'AMZN']
+DEFAULT_SYMBOLS = ['SPY', 'AAPL', 'GOOGL', 'MSFT', 'TSLA', 'AMZN']
 
 # Data fetching parameters
 DEFAULT_PERIOD = '1d'  # 1 day of data
