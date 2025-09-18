@@ -69,7 +69,7 @@ class StockDataProcessor:
     
     def find_outliers(self, df: pd.DataFrame, column: str) -> pd.DataFrame:
         """
-        Identify outliers using a box plot method, i.e., points that are more than three standard deviations from the mean.
+        Identify outliers as points that are more than three standard deviations from the mean (standard deviation-based method).
         Reference: https://www.tandfonline.com/doi/full/10.1080/23322039.2022.2066762#abstract
         Args:
             df: Input DataFrame with stock data
